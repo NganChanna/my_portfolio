@@ -1,17 +1,20 @@
-import { Navbar, Footer } from "./components";
-import { Route } from "react-router-dom";
-
+import { Navbar, Footer, ThemeProvider } from "./components";
+import { Routes, Route } from "react-router-dom";
+import { HomePage, About, Projects, Contact } from "./pages";
 function App() {
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Navbar />
       <main>
-        <Route path="/" element={<div>Home Page</div>} />
-        <Route path="/projects" element={<div>Projects Page</div>} />
-        <Route path="/about" element={<div>About Page</div>} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 
